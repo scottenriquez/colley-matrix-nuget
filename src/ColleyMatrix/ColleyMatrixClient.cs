@@ -1,4 +1,5 @@
-﻿using ColleyMatrix.Service;
+﻿using ColleyMatrix.Provider;
+using ColleyMatrix.Service;
 
 namespace ColleyMatrix
 {
@@ -10,7 +11,7 @@ namespace ColleyMatrix
         public ColleyMatrixClient(int numberOfTeams)
         {
             _numberOfTeams = numberOfTeams;
-            _colleyMatrixService = new ColleyMatrixService();
+            _colleyMatrixService = new ColleyMatrixService(new MatrixProvider());
         }
         
         public void SimulateGame(int winnerId, int loserId)
