@@ -40,13 +40,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ColleyMatrixClient.cs" />
+    <Compile Include="C.cs" />
     <Compile Include="IColleyMatrixClient.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Provider\IJsonSerializationProvider.cs" />
     <Compile Include="Provider\IMatrixProvider.cs" />
+    <Compile Include="Provider\JsonSerializationProvider.cs" />
     <Compile Include="Provider\MatrixProvider.cs" />
     <Compile Include="Service\ColleyMatrixService.cs" />
     <Compile Include="Service\IColleyMatrixService.cs" />
+    <Compile Include="Service\IValidatorService.cs" />
+    <Compile Include="Service\ValidatorService.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

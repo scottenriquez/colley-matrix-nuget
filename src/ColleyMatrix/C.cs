@@ -3,15 +3,18 @@ using ColleyMatrix.Service;
 
 namespace ColleyMatrix
 {
-    public class ColleyMatrixClient : IColleyMatrixClient
+    public class C : IColleyMatrixClient
     {
         private readonly int _numberOfTeams;
         private readonly IColleyMatrixService _colleyMatrixService;
 
-        public ColleyMatrixClient(int numberOfTeams)
+        public C(int numberOfTeams)
         {
             _numberOfTeams = numberOfTeams;
-            _colleyMatrixService = new ColleyMatrixService(new MatrixProvider());
+            IJsonSerializationProvider jsonSerializationProvider = new JsonSerializationProvider();
+            IMatrixProvider matrixProvider = new MatrixProvider(jsonSerializationProvider, numberOfTeams);
+            IValidatorService validatorService = new ValidatorService();
+            _colleyMatrixService = new ColleyMatrixService(matrixProvider, validatorService);
         }
         
         public void SimulateGame(int winnerId, int loserId)

@@ -3,7 +3,7 @@
 namespace ColleyMatrix.Tests.Service
 {
     [TestFixture]
-    public class ServiceTests
+    public class ColleyMatrixServiceTests
     {
         
     }

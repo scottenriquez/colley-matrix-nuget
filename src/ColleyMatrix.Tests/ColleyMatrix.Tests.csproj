@@ -53,8 +53,9 @@
   <ItemGroup>
     <Compile Include="Client\ClientTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Provider\ProviderTests.cs" />
-    <Compile Include="Service\ServiceTests.cs" />
+    <Compile Include="Provider\MatrixProviderTests.cs" />
+    <Compile Include="Service\ColleyMatrixServiceTests.cs" />
+    <Compile Include="Service\ValidatorServiceTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
