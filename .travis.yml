@@ -1,8 +1,8 @@
 language: csharp
-solution: ColleyMatrix.sln
+solution: ./src/ColleyMatrix.sln
 install:
-  - nuget restore ColleyMatrix.sln
+  - nuget restore ./src/ColleyMatrix.sln
   - nuget install NUnit.Console -Version 3.5.0 -OutputDirectory testrunner
 script:
-  - xbuild /p:Configuration=Release ColleyMatrix.sln
+  - xbuild /p:Configuration=Release ./src/ColleyMatrix.sln
   - mono ./testrunner/NUnit.ConsoleRunner.3.5.0/tools/nunit3-console.exe ./ColleyMatrix/ColleyMatrix.Tests/bin/Release/ColleyMatrix.Tests.dll
