@@ -1,10 +1,24 @@
-﻿namespace ColleyMatrix.Service
+﻿using ColleyMatrix.Exception;
+using ColleyMatrix.Provider;
+
+namespace ColleyMatrix.Service
 {
     public class ValidatorService : IValidatorService
     {
-        public void ValidateTeams(int winnerId, int loserId)
+        private readonly IMatrixProvider _matrixProvider;
+
+        public ValidatorService(IMatrixProvider matrixProvider)
         {
-            throw new System.NotImplementedException();
+            _matrixProvider = matrixProvider;
+        }
+        
+        public void ValidateTeam(int teamId)
+        {
+            int dimensions = _matrixProvider.GetDimensions();
+            if (!(teamId < dimensions) || teamId < 0)
+            {
+                throw new InvalidTeamIndexException(teamId);
+            }
         }
     }
 }

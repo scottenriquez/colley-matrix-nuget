@@ -73,5 +73,14 @@ namespace ColleyMatrix.Provider
         {
             return _jsonSerializationProvider.Serialize(_matrix);
         }
+
+        /// <summary>
+        /// Returns the dimensions of the matrix
+        /// </summary>
+        /// <returns>Matrix dimensions</returns>
+        public int GetDimensions()
+        {
+            return _dimensions;
+        }
     }
 }

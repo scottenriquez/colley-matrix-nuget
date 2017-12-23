@@ -31,5 +31,11 @@
         /// </summary>
         /// <returns>JSON string</returns>
         string SerializeToJson();
+        
+        /// <summary>
+        /// Returns the dimensions of the matrix
+        /// </summary>
+        /// <returns>Matrix dimensions</returns>
+        int GetDimensions();
     }
 }

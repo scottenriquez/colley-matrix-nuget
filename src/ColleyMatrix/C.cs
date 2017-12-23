@@ -13,7 +13,7 @@ namespace ColleyMatrix
             _numberOfTeams = numberOfTeams;
             IJsonSerializationProvider jsonSerializationProvider = new JsonSerializationProvider();
             IMatrixProvider matrixProvider = new MatrixProvider(jsonSerializationProvider, numberOfTeams);
-            IValidatorService validatorService = new ValidatorService();
+            IValidatorService validatorService = new ValidatorService(matrixProvider);
             _colleyMatrixService = new ColleyMatrixService(matrixProvider, validatorService);
         }
         

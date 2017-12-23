@@ -4,8 +4,8 @@ namespace ColleyMatrix.Service
 {
     public class ColleyMatrixService : IColleyMatrixService
     {
-        private IMatrixProvider _matrixProvider;
-        private IValidatorService _validatorService;
+        private readonly IMatrixProvider _matrixProvider;
+        private readonly IValidatorService _validatorService;
         
         public ColleyMatrixService(IMatrixProvider matrixProvider, IValidatorService validatorService)
         {
@@ -15,7 +15,8 @@ namespace ColleyMatrix.Service
         
         public void SimulateGame(int winnerId, int loserId)
         {
-            _validatorService.ValidateTeams(winnerId, loserId);
+            _validatorService.ValidateTeam(winnerId);
+            _validatorService.ValidateTeam(loserId);
         }
 
         public void Solve()

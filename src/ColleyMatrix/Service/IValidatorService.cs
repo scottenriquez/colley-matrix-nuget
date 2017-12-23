@@ -2,6 +2,6 @@
 {
     public interface IValidatorService
     {
-        void ValidateTeams(int winnerId, int loserId);
+        void ValidateTeam(int teamId);
     }
 }
