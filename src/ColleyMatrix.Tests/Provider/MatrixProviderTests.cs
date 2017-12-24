@@ -58,6 +58,7 @@ namespace ColleyMatrix.Tests.Provider
             IMatrixProvider matrixProvider = new MatrixProvider(jsonSerializationProvider, dimensions);
             
             //act
+            matrixProvider.InitializeColleyMatrix();
             matrixProvider.SerializeToJson();
             
             //assert
