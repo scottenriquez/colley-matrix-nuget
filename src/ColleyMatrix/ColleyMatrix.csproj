@@ -46,6 +46,7 @@
     <Compile Include="C.cs" />
     <Compile Include="Exception\InvalidTeamIndexException.cs" />
     <Compile Include="IColleyMatrixClient.cs" />
+    <Compile Include="Model\Team.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Provider\IJsonSerializationProvider.cs" />
     <Compile Include="Provider\IMatrixProvider.cs" />
