@@ -1,4 +1,5 @@
-﻿using System.Drawing.Drawing2D;
+﻿using MathNet.Numerics.LinearAlgebra.Double;
+using MathNet.Numerics.LinearAlgebra.Factorization;
 
 namespace ColleyMatrix.Provider
 {
@@ -9,7 +10,7 @@ namespace ColleyMatrix.Provider
     {
         private readonly IJsonSerializationProvider _jsonSerializationProvider;
         private readonly int _dimensions;
-        private readonly int[,] _matrix;
+        private SparseMatrix _sparseMatrix;
         private bool _isInitialized;
         
         /// <summary>
@@ -21,7 +22,6 @@ namespace ColleyMatrix.Provider
         {
             _jsonSerializationProvider = jsonSerializationProvider;
             _dimensions = dimensions;
-            _matrix = new int[dimensions, dimensions];
             _isInitialized = false;
         }
         
@@ -32,10 +32,7 @@ namespace ColleyMatrix.Provider
         {
             if (!_isInitialized)
             {
-                for (int index = 0; index < _dimensions; index++)
-                {
-                    _matrix[index, index] += 2;
-                }
+                _sparseMatrix = SparseMatrix.CreateDiagonal(_dimensions, _dimensions, 2);
                 _isInitialized = true;
             }
         }
@@ -46,9 +43,9 @@ namespace ColleyMatrix.Provider
         /// <param name="row">X value</param>
         /// <param name="column">Y value</param>
         /// <returns>Target value</returns>
-        public int GetValue(int row, int column)
+        public double GetValue(int row, int column)
         {
-            return _matrix[row, column];
+            return _sparseMatrix.At(row, column);
         }
         
         /// <summary>
@@ -57,9 +54,9 @@ namespace ColleyMatrix.Provider
         /// <param name="row">X value</param>
         /// <param name="column">Y value</param>
         /// <param name="newValue">New value</param>
-        public void SetValue(int row, int column, int newValue)
+        public void SetValue(int row, int column, double newValue)
         {
-            _matrix[row, column] = newValue;
+            _sparseMatrix.At(row, column, newValue);
         }
         
         /// <summary>
@@ -68,7 +65,7 @@ namespace ColleyMatrix.Provider
         /// <returns>JSON string</returns>
         public string SerializeToJson()
         {
-            return _jsonSerializationProvider.Serialize(_matrix);
+            return _jsonSerializationProvider.Serialize(_sparseMatrix.ToColumnArrays());
         }
 
         /// <summary>
@@ -80,9 +77,12 @@ namespace ColleyMatrix.Provider
             return _dimensions;
         }
 
-        public void LowerUpperFactorization()
+        public void LowerUpperFactorization(double[] ratings)
         {
-            
+            LU<double> lowerUpper = _sparseMatrix.LU();
+            Vector ratingsVector = new DenseVector(ratings);
+            lowerUpper.Solve(ratingsVector);
+            //TODO: decide on return format
         }
     }
 }

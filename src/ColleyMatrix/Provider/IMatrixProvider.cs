@@ -16,7 +16,7 @@
         /// <param name="row">X value</param>
         /// <param name="column">Y value</param>
         /// <returns>Target value</returns>
-        int GetValue(int row, int column);
+        double GetValue(int row, int column);
         
         /// <summary>
         /// Sets a new value at the specified row and column
@@ -24,7 +24,7 @@
         /// <param name="row">X value</param>
         /// <param name="column">Y value</param>
         /// <param name="newValue">New value</param>
-        void SetValue(int row, int column, int newValue);
+        void SetValue(int row, int column, double newValue);
         
         /// <summary>
         /// Serializes underlying matrix to JSON
@@ -38,6 +38,6 @@
         /// <returns>Matrix dimensions</returns>
         int GetDimensions();
 
-        void LowerUpperFactorization();
+        void LowerUpperFactorization(double[] ratings);
     }
 }

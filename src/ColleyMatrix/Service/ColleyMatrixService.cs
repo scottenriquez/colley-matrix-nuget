@@ -33,7 +33,7 @@ namespace ColleyMatrix.Service
         {
             _validatorService.ValidateTeam(winnerId);
             _validatorService.ValidateTeam(loserId);
-            int gameCount = _matrixProvider.GetValue(winnerId, loserId);
+            double gameCount = _matrixProvider.GetValue(winnerId, loserId);
             _matrixProvider.SetValue(winnerId, loserId, gameCount - 1);
             _matrixProvider.SetValue(loserId, winnerId, gameCount - 1);
             _teams[winnerId].Wins++;
@@ -47,7 +47,7 @@ namespace ColleyMatrix.Service
             throw new System.NotImplementedException();
         }
 
-        public decimal ComputeRating(int wins, int losses)
+        public double ComputeRating(double wins, double losses)
         {
             return 1 + (wins - losses) / 2;
         }
