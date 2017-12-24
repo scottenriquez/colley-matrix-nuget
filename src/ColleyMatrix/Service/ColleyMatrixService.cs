@@ -36,12 +36,20 @@ namespace ColleyMatrix.Service
             int gameCount = _matrixProvider.GetValue(winnerId, loserId);
             _matrixProvider.SetValue(winnerId, loserId, gameCount - 1);
             _matrixProvider.SetValue(loserId, winnerId, gameCount - 1);
-            //TODO: update ratings and wins/losses
+            _teams[winnerId].Wins++;
+            _teams[loserId].Losses++;
+            _teams[winnerId].ColleyRating = ComputeRating(_teams[winnerId].Wins, _teams[winnerId].Losses);
+            _teams[loserId].ColleyRating = ComputeRating(_teams[loserId].Wins, _teams[loserId].Losses);
         }
 
         public void Solve()
         {
             throw new System.NotImplementedException();
+        }
+
+        public decimal ComputeRating(int wins, int losses)
+        {
+            return 1 + (wins - losses) / 2;
         }
     }
 }

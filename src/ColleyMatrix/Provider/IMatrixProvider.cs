@@ -37,5 +37,7 @@
         /// </summary>
         /// <returns>Matrix dimensions</returns>
         int GetDimensions();
+
+        void LowerUpperFactorization();
     }
 }

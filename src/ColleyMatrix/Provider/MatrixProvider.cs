@@ -32,12 +32,9 @@ namespace ColleyMatrix.Provider
         {
             if (!_isInitialized)
             {
-                for (int row = 0; row < _dimensions; row++)
+                for (int index = 0; index < _dimensions; index++)
                 {
-                    for (int column = 0; column < _dimensions; column++)
-                    {
-                        _matrix[row, column] += 2;
-                    }
+                    _matrix[index, index] += 2;
                 }
                 _isInitialized = true;
             }
@@ -81,6 +78,11 @@ namespace ColleyMatrix.Provider
         public int GetDimensions()
         {
             return _dimensions;
+        }
+
+        public void LowerUpperFactorization()
+        {
+            
         }
     }
 }

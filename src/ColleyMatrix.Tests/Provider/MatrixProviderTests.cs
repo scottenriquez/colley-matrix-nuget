@@ -21,8 +21,8 @@ namespace ColleyMatrix.Tests.Provider
             
             //assert
             matrixProvider.GetValue(0, 0).ShouldBeEquivalentTo(2);
-            matrixProvider.GetValue(0, 1).ShouldBeEquivalentTo(2);
-            matrixProvider.GetValue(1, 0).ShouldBeEquivalentTo(2);
+            matrixProvider.GetValue(0, 1).ShouldBeEquivalentTo(0);
+            matrixProvider.GetValue(1, 0).ShouldBeEquivalentTo(0);
             matrixProvider.GetValue(1, 1).ShouldBeEquivalentTo(2);
         }
         
