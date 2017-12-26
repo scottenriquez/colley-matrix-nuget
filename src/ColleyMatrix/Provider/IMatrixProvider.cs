@@ -1,4 +1,6 @@
-﻿namespace ColleyMatrix.Provider
+﻿using System.Collections.Generic;
+
+namespace ColleyMatrix.Provider
 {
     /// <summary>
     /// Abstraction for interacting with a matrix
@@ -38,6 +40,11 @@
         /// <returns>Matrix dimensions</returns>
         int GetDimensions();
 
-        void LowerUpperFactorization(double[] ratings);
+        /// <summary>
+        /// LU factorize the underlying sparse matrix and solve
+        /// </summary>
+        /// <param name="colleyRatings">A list of Colley ratings for teams where the indices in the matrix correspond to the indices in the array</param>
+        /// <returns>The solved LU factorized sparse matrix</returns>
+        IEnumerable<double> LowerUpperFactorizeAndSolve(double[] colleyRatings);
     }
 }
