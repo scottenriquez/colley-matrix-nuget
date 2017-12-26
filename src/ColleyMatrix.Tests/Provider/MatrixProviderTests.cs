@@ -10,44 +10,20 @@ namespace ColleyMatrix.Tests.Provider
     public class MatrixProviderTests
     {        
         [Test]
-        public void Should_InitializeColleyMatrix_ForStandardInput()
+        public void Should_ConstructMatrixProvider_ForStandardInput()
         {
             //arrange
             int dimensions = 2;
             IJsonSerializationProvider jsonSerializationProvider = A.Fake<IJsonSerializationProvider>();
-            IMatrixProvider matrixProvider = new MatrixProvider(jsonSerializationProvider, dimensions);
             
             //act
-            matrixProvider.InitializeColleyMatrix();
+            IMatrixProvider matrixProvider = new MatrixProvider(jsonSerializationProvider, dimensions);
             
             //assert
             matrixProvider.GetValue(0, 0).ShouldBeEquivalentTo(2);
             matrixProvider.GetValue(0, 1).ShouldBeEquivalentTo(0);
             matrixProvider.GetValue(1, 0).ShouldBeEquivalentTo(0);
             matrixProvider.GetValue(1, 1).ShouldBeEquivalentTo(2);
-        }
-        
-        [Test]
-        public void ShouldNot_InitializeColleyMatrix_AfterBeingInitialized()
-        {
-            //arrange
-            int dimensions = 2;
-            IJsonSerializationProvider jsonSerializationProvider = A.Fake<IJsonSerializationProvider>();
-            IMatrixProvider matrixProvider = new MatrixProvider(jsonSerializationProvider, dimensions);
-            
-            //act
-            matrixProvider.InitializeColleyMatrix();
-            matrixProvider.SetValue(0, 0, 3);
-            matrixProvider.SetValue(0, 1, 3);
-            matrixProvider.SetValue(1, 0, 3);
-            matrixProvider.SetValue(1, 1, 3);
-            matrixProvider.InitializeColleyMatrix();
-            
-            //assert
-            matrixProvider.GetValue(0, 0).ShouldBeEquivalentTo(3);
-            matrixProvider.GetValue(0, 1).ShouldBeEquivalentTo(3);
-            matrixProvider.GetValue(1, 0).ShouldBeEquivalentTo(3);
-            matrixProvider.GetValue(1, 1).ShouldBeEquivalentTo(3);
         }
         
         [Test]
@@ -59,7 +35,6 @@ namespace ColleyMatrix.Tests.Provider
             IMatrixProvider matrixProvider = new MatrixProvider(jsonSerializationProvider, dimensions);
             
             //act
-            matrixProvider.InitializeColleyMatrix();
             matrixProvider.SerializeToJson();
             
             //assert
@@ -77,7 +52,6 @@ namespace ColleyMatrix.Tests.Provider
             IMatrixProvider matrixProvider = new MatrixProvider(jsonSerializationProvider, dimensions);
             
             //act
-            matrixProvider.InitializeColleyMatrix();
             matrixProvider.SerializeToJson();
             IEnumerable<double> actualOutput = matrixProvider.LowerUpperFactorizeAndSolve(ratings);
             

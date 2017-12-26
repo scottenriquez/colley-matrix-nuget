@@ -16,7 +16,7 @@ namespace ColleyMatrix.Provider
         private bool _isInitialized;
         
         /// <summary>
-        /// Constructor for MatrixProvider
+        /// Constructor for MatrixProvider; initializes the sparse matrix such that M[i][i] = 2 + n
         /// </summary>
         /// <param name="jsonSerializationProvider">Serialization provider</param>
         /// <param name="dimensions">Number of rows and columns</param>
@@ -24,19 +24,7 @@ namespace ColleyMatrix.Provider
         {
             _jsonSerializationProvider = jsonSerializationProvider;
             _dimensions = dimensions;
-            _isInitialized = false;
-        }
-        
-        /// <summary>
-        /// Initializes the matrix such that M[i][i] = 2 + n
-        /// </summary>
-        public void InitializeColleyMatrix()
-        {
-            if (!_isInitialized)
-            {
-                _sparseMatrix = SparseMatrix.CreateDiagonal(_dimensions, _dimensions, 2);
-                _isInitialized = true;
-            }
+            _sparseMatrix = SparseMatrix.CreateDiagonal(_dimensions, _dimensions, 2);
         }
         
         /// <summary>

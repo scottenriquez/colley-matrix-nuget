@@ -8,11 +8,6 @@ namespace ColleyMatrix.Provider
     public interface IMatrixProvider
     {
         /// <summary>
-        /// Initializes the matrix such that M[i][i] = 2 + n
-        /// </summary>
-        void InitializeColleyMatrix();
-        
-        /// <summary>
         /// Returns the value for the specified row and column
         /// </summary>
         /// <param name="row">X value</param>
