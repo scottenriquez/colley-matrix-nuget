@@ -1,9 +1,11 @@
-﻿namespace ColleyMatrix.Service
+﻿using System.Collections.Generic;
+
+namespace ColleyMatrix.Service
 {
     public interface IColleyMatrixService
     {
         void SimulateGame(int winnerId, int loserId);
-        void Solve();
-        double ComputeRating(double wins, double losses);
+        IEnumerable<double> Solve();
+        double ComputeColleyRating(double wins, double losses);
     }
 }

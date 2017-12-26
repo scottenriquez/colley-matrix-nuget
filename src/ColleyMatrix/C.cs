@@ -1,4 +1,5 @@
-﻿using ColleyMatrix.Provider;
+﻿using System.Collections.Generic;
+using ColleyMatrix.Provider;
 using ColleyMatrix.Service;
 
 namespace ColleyMatrix
@@ -22,9 +23,9 @@ namespace ColleyMatrix
             _colleyMatrixService.SimulateGame(winnerId, loserId);
         }
 
-        public void Solve()
+        public IEnumerable<double> Solve()
         {
-            _colleyMatrixService.Solve();
+            return _colleyMatrixService.Solve();
         }
     }
 }

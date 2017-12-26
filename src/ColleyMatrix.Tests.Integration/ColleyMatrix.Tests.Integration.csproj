@@ -4,12 +4,12 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{EBEA4862-767B-450D-96A9-00DD8BB41C2F}</ProjectGuid>
+    <ProjectGuid>{EEFC6A10-B468-41C6-A95D-C5DF66C66EE1}</ProjectGuid>
     <ProjectTypeGuids>{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>ColleyMatrix.Tests</RootNamespace>
-    <AssemblyName>ColleyMatrix.Tests</AssemblyName>
+    <RootNamespace>ColleyMatrix.Tests.Integration</RootNamespace>
+    <AssemblyName>ColleyMatrix.Tests.Integration</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -51,11 +51,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Client\ColleyMatrixClientTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Provider\JsonSerializationProviderTests.cs" />
-    <Compile Include="Provider\MatrixProviderTests.cs" />
-    <Compile Include="Service\ColleyMatrixServiceTests.cs" />
-    <Compile Include="Service\ValidatorServiceTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

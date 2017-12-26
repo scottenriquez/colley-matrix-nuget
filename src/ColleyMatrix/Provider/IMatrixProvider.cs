@@ -40,6 +40,6 @@ namespace ColleyMatrix.Provider
         /// </summary>
         /// <param name="colleyRatings">A list of Colley ratings for teams where the indices in the matrix correspond to the indices in the array</param>
         /// <returns>The solved LU factorized sparse matrix</returns>
-        IEnumerable<double> LowerUpperFactorizeAndSolve(double[] colleyRatings);
+        IEnumerable<double> LowerUpperFactorizeAndSolve(IEnumerable<double> colleyRatings);
     }
 }

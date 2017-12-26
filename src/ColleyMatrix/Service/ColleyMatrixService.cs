@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using ColleyMatrix.Model;
 using ColleyMatrix.Provider;
 
@@ -38,16 +39,17 @@ namespace ColleyMatrix.Service
             _matrixProvider.SetValue(loserId, winnerId, gameCount - 1);
             _teams[winnerId].Wins++;
             _teams[loserId].Losses++;
-            _teams[winnerId].ColleyRating = ComputeRating(_teams[winnerId].Wins, _teams[winnerId].Losses);
-            _teams[loserId].ColleyRating = ComputeRating(_teams[loserId].Wins, _teams[loserId].Losses);
+            _teams[winnerId].ColleyRating = ComputeColleyRating(_teams[winnerId].Wins, _teams[winnerId].Losses);
+            _teams[loserId].ColleyRating = ComputeColleyRating(_teams[loserId].Wins, _teams[loserId].Losses);
         }
 
-        public void Solve()
+        public IEnumerable<double> Solve()
         {
-            throw new System.NotImplementedException();
+            IEnumerable<double> colleyRatings = _teams.Select(team => team.ColleyRating);
+            return _matrixProvider.LowerUpperFactorizeAndSolve(colleyRatings);
         }
 
-        public double ComputeRating(double wins, double losses)
+        public double ComputeColleyRating(double wins, double losses)
         {
             return 1 + (wins - losses) / 2;
         }

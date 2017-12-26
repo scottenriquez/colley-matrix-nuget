@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ColleyMatrix", "ColleyMatri
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ColleyMatrix.Tests", "ColleyMatrix.Tests\ColleyMatrix.Tests.csproj", "{EBEA4862-767B-450D-96A9-00DD8BB41C2F}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ColleyMatrix.Tests.Integration", "ColleyMatrix.Tests.Integration\ColleyMatrix.Tests.Integration.csproj", "{EEFC6A10-B468-41C6-A95D-C5DF66C66EE1}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{EBEA4862-767B-450D-96A9-00DD8BB41C2F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EBEA4862-767B-450D-96A9-00DD8BB41C2F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EBEA4862-767B-450D-96A9-00DD8BB41C2F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EEFC6A10-B468-41C6-A95D-C5DF66C66EE1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EEFC6A10-B468-41C6-A95D-C5DF66C66EE1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EEFC6A10-B468-41C6-A95D-C5DF66C66EE1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EEFC6A10-B468-41C6-A95D-C5DF66C66EE1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

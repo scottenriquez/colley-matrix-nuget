@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using MathNet.Numerics.LinearAlgebra;
 using MathNet.Numerics.LinearAlgebra.Double;
 using MathNet.Numerics.LinearAlgebra.Factorization;
@@ -72,10 +73,10 @@ namespace ColleyMatrix.Provider
         /// </summary>
         /// <param name="colleyRatings">A list of Colley ratings for teams where the indices in the matrix correspond to the indices in the array</param>
         /// <returns>The solved LU factorized sparse matrix</returns>
-        public IEnumerable<double> LowerUpperFactorizeAndSolve(double[] colleyRatings)
+        public IEnumerable<double> LowerUpperFactorizeAndSolve(IEnumerable<double> colleyRatings)
         {
             LU<double> lowerUpper = _sparseMatrix.LU();
-            Vector ratingsVector = new DenseVector(colleyRatings);
+            Vector ratingsVector = new DenseVector(colleyRatings.ToArray());
             Vector<double> solvedVector = lowerUpper.Solve(ratingsVector);
             return solvedVector.AsArray();
         }
