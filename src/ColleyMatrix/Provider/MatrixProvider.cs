@@ -6,15 +6,12 @@ using MathNet.Numerics.LinearAlgebra.Factorization;
 
 namespace ColleyMatrix.Provider
 {
-    /// <summary>
-    /// Abstraction for interacting with a matrix
-    /// </summary>
+    /// <inheritdoc />
     public class MatrixProvider : IMatrixProvider
     {
         private readonly IJsonSerializationProvider _jsonSerializationProvider;
         private readonly int _dimensions;
-        private SparseMatrix _sparseMatrix;
-        private bool _isInitialized;
+        private readonly SparseMatrix _sparseMatrix;
         
         /// <summary>
         /// Constructor for MatrixProvider; initializes the sparse matrix such that M[i][i] = 2 + n
@@ -28,51 +25,31 @@ namespace ColleyMatrix.Provider
             _sparseMatrix = SparseMatrix.CreateDiagonal(_dimensions, _dimensions, 2);
         }
         
-        /// <summary>
-        /// Returns the value for the specified row and column
-        /// </summary>
-        /// <param name="row">X value</param>
-        /// <param name="column">Y value</param>
-        /// <returns>Target value</returns>
+        /// <inheritdoc />
         public double GetValue(int row, int column)
         {
             return _sparseMatrix.At(row, column);
         }
         
-        /// <summary>
-        /// Sets a new value at the specified row and column
-        /// </summary>
-        /// <param name="row">X value</param>
-        /// <param name="column">Y value</param>
-        /// <param name="newValue">New value</param>
+        /// <inheritdoc />
         public void SetValue(int row, int column, double newValue)
         {
             _sparseMatrix.At(row, column, newValue);
         }
         
-        /// <summary>
-        /// Serializes underlying matrix to JSON
-        /// </summary>
-        /// <returns>JSON string</returns>
+        /// <inheritdoc />
         public string SerializeToJson()
         {
             return _jsonSerializationProvider.Serialize(_sparseMatrix.ToColumnArrays());
         }
 
-        /// <summary>
-        /// Returns the dimensions of the matrix
-        /// </summary>
-        /// <returns>Matrix dimensions</returns>
+        /// <inheritdoc />
         public int GetDimensions()
         {
             return _dimensions;
         }
 
-        /// <summary>
-        /// LU factorize the underlying sparse matrix and solve
-        /// </summary>
-        /// <param name="colleyRatings">A list of Colley ratings for teams where the indices in the matrix correspond to the indices in the array</param>
-        /// <returns>The solved LU factorized sparse matrix</returns>
+        /// <inheritdoc />
         public IEnumerable<double> LowerUpperFactorizeAndSolve(IEnumerable<double> colleyRatings)
         {
             LU<double> lowerUpper = _sparseMatrix.LU();

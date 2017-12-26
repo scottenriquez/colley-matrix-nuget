@@ -37,6 +37,8 @@ namespace ColleyMatrix.Service
             double gameCount = _matrixProvider.GetValue(winnerId, loserId);
             _matrixProvider.SetValue(winnerId, loserId, gameCount - 1);
             _matrixProvider.SetValue(loserId, winnerId, gameCount - 1);
+            _matrixProvider.SetValue(winnerId, winnerId, _matrixProvider.GetValue(winnerId, winnerId) + 1);
+            _matrixProvider.SetValue(loserId, loserId, _matrixProvider.GetValue(loserId, loserId) + 1);
             _teams[winnerId].Wins++;
             _teams[loserId].Losses++;
             _teams[winnerId].ColleyRating = ComputeColleyRating(_teams[winnerId].Wins, _teams[winnerId].Losses);

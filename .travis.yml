@@ -6,4 +6,4 @@ install:
 script:
   - xbuild /p:Configuration=Release ./src/ColleyMatrix.sln
   - mono ./testrunner/NUnit.ConsoleRunner.3.5.0/tools/nunit3-console.exe ./src/ColleyMatrix.Tests/bin/Release/ColleyMatrix.Tests.dll
-  - mono ./testrunner/NUnit.ConsoleRunner.3.5.0/tools/nunit3-console.exe ./src/ColleyMatrix.Tests/bin/Release/ColleyMatrix.Tests.Integration.dll
+  - mono ./testrunner/NUnit.ConsoleRunner.3.5.0/tools/nunit3-console.exe ./src/ColleyMatrix.Tests.Integration/bin/Release/ColleyMatrix.Tests.Integration.dll

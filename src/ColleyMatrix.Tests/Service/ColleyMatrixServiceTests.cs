@@ -33,9 +33,9 @@ namespace ColleyMatrix.Tests.Service
         public void Should_ComputeColleyRating_ForStandardInput()
         {
             //arrange
-            double wins = 5;
-            double losses = 5;
-            double expectedOutput = 1;
+            double wins = 0;
+            double losses = 1;
+            double expectedOutput = 0.5;
             IMatrixProvider matrixProvider = A.Fake<IMatrixProvider>();
             IValidatorService validatorService = A.Fake<IValidatorService>();
             IColleyMatrixService colleyMatrixService = new ColleyMatrixService(matrixProvider, validatorService);
