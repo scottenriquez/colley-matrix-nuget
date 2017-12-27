@@ -25,6 +25,7 @@ namespace ColleyMatrix.Service
                     TeamId = teamId,
                     Wins = 0,
                     Losses = 0,
+                    //initialize all ratings to 1
                     ColleyRating = 1
                 });
             }

@@ -4,12 +4,12 @@ using ColleyMatrix.Service;
 
 namespace ColleyMatrix
 {
-    public class C : IColleyMatrixClient
+    public class ColleyMatrix : IColleyMatrixClient
     {
         private readonly int _numberOfTeams;
         private readonly IColleyMatrixService _colleyMatrixService;
 
-        public C(int numberOfTeams)
+        public ColleyMatrix(int numberOfTeams)
         {
             _numberOfTeams = numberOfTeams;
             IJsonSerializationProvider jsonSerializationProvider = new JsonSerializationProvider();

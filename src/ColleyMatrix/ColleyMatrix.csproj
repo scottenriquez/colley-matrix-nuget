@@ -46,7 +46,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="C.cs" />
+    <Compile Include="ColleyMatrix.cs" />
     <Compile Include="Exception\InvalidTeamIndexException.cs" />
     <Compile Include="IColleyMatrixClient.cs" />
     <Compile Include="Model\Team.cs" />

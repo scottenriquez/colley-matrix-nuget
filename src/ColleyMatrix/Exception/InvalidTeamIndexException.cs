@@ -1,5 +1,8 @@
 ﻿namespace ColleyMatrix.Exception
 {
+    /// <summary>
+    /// 
+    /// </summary>
     public class InvalidTeamIndexException : System.Exception
     {
         private readonly int _teamId;
