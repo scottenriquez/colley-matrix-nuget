@@ -5,6 +5,7 @@ using ColleyMatrix.Provider;
 
 namespace ColleyMatrix.Service
 {
+    /// <inheritdoc />
     public class ColleyMatrixService : IColleyMatrixService
     {
         private readonly IMatrixProvider _matrixProvider;
@@ -12,6 +13,11 @@ namespace ColleyMatrix.Service
         private readonly int _dimensions;
         private readonly IList<Team> _teams;
         
+        /// <summary>
+        /// Instantiates a ColleyMatrixService object
+        /// </summary>
+        /// <param name="matrixProvider">An abstraction underlying sparse matrix</param>
+        /// <param name="validatorService">A service for validating input and output</param>
         public ColleyMatrixService(IMatrixProvider matrixProvider, IValidatorService validatorService)
         {
             _matrixProvider = matrixProvider;
@@ -31,6 +37,7 @@ namespace ColleyMatrix.Service
             }
         }
         
+        /// <inheritdoc />
         public void SimulateGame(int winnerId, int loserId)
         {
             _validatorService.ValidateTeam(winnerId);
@@ -46,12 +53,14 @@ namespace ColleyMatrix.Service
             _teams[loserId].ColleyRating = ComputeColleyRating(_teams[loserId].Wins, _teams[loserId].Losses);
         }
 
+        /// <inheritdoc />
         public IEnumerable<double> Solve()
         {
             IEnumerable<double> colleyRatings = _teams.Select(team => team.ColleyRating);
             return _matrixProvider.LowerUpperFactorizeAndSolve(colleyRatings);
         }
 
+        /// <inheritdoc />
         public double ComputeColleyRating(double wins, double losses)
         {
             return 1 + (wins - losses) / 2;

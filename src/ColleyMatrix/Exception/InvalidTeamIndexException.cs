@@ -1,7 +1,7 @@
 ﻿namespace ColleyMatrix.Exception
 {
     /// <summary>
-    /// 
+    /// An exception thrown when an invalid team index is supplied to a function
     /// </summary>
     public class InvalidTeamIndexException : System.Exception
     {
