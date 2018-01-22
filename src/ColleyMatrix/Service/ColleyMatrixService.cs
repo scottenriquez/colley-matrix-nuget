@@ -16,7 +16,7 @@ namespace ColleyMatrix.Service
         /// <summary>
         /// Instantiates a ColleyMatrixService object
         /// </summary>
-        /// <param name="matrixProvider">An abstraction underlying sparse matrix</param>
+        /// <param name="matrixProvider">An abstraction for the underlying sparse matrix</param>
         /// <param name="validatorService">A service for validating input and output</param>
         public ColleyMatrixService(IMatrixProvider matrixProvider, IValidatorService validatorService)
         {

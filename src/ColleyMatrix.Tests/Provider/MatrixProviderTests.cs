@@ -8,7 +8,8 @@ namespace ColleyMatrix.Tests.Provider
 {
     [TestFixture]
     public class MatrixProviderTests
-    {        
+    {
+        
         [Test]
         public void Should_ConstructMatrixProvider_ForStandardInput()
         {
@@ -27,6 +28,39 @@ namespace ColleyMatrix.Tests.Provider
         }
         
         [Test]
+        public void Should_GetValue_ForStandardInput()
+        {
+            //arrange
+            int dimensions = 2;
+            double expectedOutput = 2;
+            IJsonSerializationProvider jsonSerializationProvider = A.Fake<IJsonSerializationProvider>();
+            IMatrixProvider matrixProvider = new MatrixProvider(jsonSerializationProvider, dimensions);
+            
+            //act
+            double actualOutput = matrixProvider.GetValue(0, 0);
+
+            //assert
+            actualOutput.ShouldBeEquivalentTo(expectedOutput);
+        }
+        
+        [Test]
+        public void Should_SetValue_ForStandardInput()
+        {
+            //arrange
+            int dimensions = 2;
+            double newValue = 5;
+            IJsonSerializationProvider jsonSerializationProvider = A.Fake<IJsonSerializationProvider>();
+            IMatrixProvider matrixProvider = new MatrixProvider(jsonSerializationProvider, dimensions);
+            matrixProvider.SetValue(0, 0, newValue);
+            
+            //act
+            double actualOutput = matrixProvider.GetValue(0, 0);
+
+            //assert
+            actualOutput.ShouldBeEquivalentTo(newValue);
+        }
+        
+        [Test]
         public void Should_SerializeToJson_ForStandardInput()
         {
             //arrange
@@ -39,6 +73,21 @@ namespace ColleyMatrix.Tests.Provider
             
             //assert
             A.CallTo(() => jsonSerializationProvider.Serialize(null)).WithAnyArguments().MustHaveHappened();
+        }
+        
+        [Test]
+        public void Should_GetDimensions_ForStandardInput()
+        {
+            //arrange
+            int dimensions = 2;
+            IJsonSerializationProvider jsonSerializationProvider = A.Fake<IJsonSerializationProvider>();
+            IMatrixProvider matrixProvider = new MatrixProvider(jsonSerializationProvider, dimensions);
+            
+            //act
+            double actualOutput = matrixProvider.GetDimensions();
+
+            //assert
+            actualOutput.ShouldBeEquivalentTo(dimensions);
         }
 
         [Test]

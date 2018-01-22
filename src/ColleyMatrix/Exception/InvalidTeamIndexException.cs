@@ -8,6 +8,10 @@
         private readonly int _teamId;
         public string Message { get; set; }
         
+        /// <summary>
+        /// Instantiates a InvalidTeamIndexException object
+        /// </summary>
+        /// <param name="teamId">The invalid team ID</param>
         public InvalidTeamIndexException(int teamId)
         {
             _teamId = teamId;
