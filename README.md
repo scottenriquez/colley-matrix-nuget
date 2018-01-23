@@ -14,7 +14,7 @@ Note that if the <code>winnerId</code> or <code>loserId</code> is not valid resp
 
 You can solve the sparse matrix at any point without modifying the internal state.
 
-<code>IEnumerable<double> solvedVector = colleyMatrix.Solve();</code>
+<code>IEnumerable`<double`> solvedVector = colleyMatrix.Solve();</code>
 
 # Build Status
 [![Build Status](https://travis-ci.org/scottenriquez/colley-matrix-nuget.svg?branch=master)](https://travis-ci.org/scottenriquez/colley-matrix-nuget)
