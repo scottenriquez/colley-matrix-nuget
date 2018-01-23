@@ -11,14 +11,15 @@ namespace ColleyMatrix.Tests.Integration.Client
         public void Should_SimulateGameAndSolve_ForStandardInput()
         {
             //arrange
+            int numberOfTeams = 5;
             int winnerId = 4;
             int loserId = 2;
             IEnumerable<double> expectedOutput = new double[] {0.5, 0.5, 0.375, 0.5, 0.6250000000000001}; 
-            ColleyMatrix colley = new ColleyMatrix(5);
+            ColleyMatrix colleyMatrix = new ColleyMatrix(numberOfTeams);
             
             //act
-            colley.SimulateGame(winnerId, loserId);
-            IEnumerable<double> actualOutput = colley.Solve();
+            colleyMatrix.SimulateGame(winnerId, loserId);
+            IEnumerable<double> actualOutput = colleyMatrix.Solve();
 
             //assert
             actualOutput.ShouldAllBeEquivalentTo(expectedOutput);
