@@ -6,7 +6,7 @@ The <code>ColleyMatrix</code> client exposes two methods: <code>SimulateGame</co
 
 <code>ColleyMatrix colleyMatrix = new ColleyMatrix(numberOfTeams);</code>
 
-This will create a client with an underlying sparse matrix where the indexes ranging from <code>0</code> to <code>numberOfTeams - 1</code> correspond to each team's ID. Next, simulate matchups:
+This will create a client with an underlying sparse matrix where the indexes range from <code>0</code> to <code>numberOfTeams - 1</code> correspond to each team's ID. Next, simulate matchups:
 
 <code>colleyMatrix.SimulateGame(winnerId, loserId);</code>
 
