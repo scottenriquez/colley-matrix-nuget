@@ -1,4 +1,5 @@
 ﻿using ColleyMatrix.Provider;
+using ColleyMatrix.Provider.Serializer.Json.NewtonSoft;
 using FluentAssertions;
 using NUnit.Framework;
 
@@ -14,13 +15,13 @@ namespace ColleyMatrix.Tests.Provider
             string expectedJson = "[[0,0],[0,0]]";
             int dimensions = 2;
             int[,] matrix = new int[dimensions, dimensions];
-            IJsonSerializationProvider jsonSerializationProvider = new JsonSerializationProvider();
+            IJsonSerializationProvider jsonSerializationProvider = new NewtonSoftJsonSerializationProvider();
             
             //act
             string outputJson = jsonSerializationProvider.Serialize(matrix);
 
             //assert
-            outputJson.ShouldBeEquivalentTo(expectedJson);
+            outputJson.Should().Be(expectedJson);
         }
         
         [Test]
@@ -29,13 +30,13 @@ namespace ColleyMatrix.Tests.Provider
             //arrange
             string expectedJson = "null";
             int[,] matrix = null;
-            IJsonSerializationProvider jsonSerializationProvider = new JsonSerializationProvider();
+            IJsonSerializationProvider jsonSerializationProvider = new NewtonSoftJsonSerializationProvider();
             
             //act
             string outputJson = jsonSerializationProvider.Serialize(matrix);
 
             //assert
-            outputJson.ShouldBeEquivalentTo(expectedJson);
+            outputJson.Should().Be(expectedJson);
         }
     }
 }

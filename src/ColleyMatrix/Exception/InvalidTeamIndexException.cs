@@ -6,7 +6,7 @@
     public class InvalidTeamIndexException : System.Exception
     {
         private readonly int _teamId;
-        public string Message { get; set; }
+        public override string Message { get; }
         
         /// <summary>
         /// Instantiates a InvalidTeamIndexException object

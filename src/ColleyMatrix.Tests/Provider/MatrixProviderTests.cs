@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using ColleyMatrix.Provider;
+using ColleyMatrix.Provider.Matrix.MathDotNet;
 using FakeItEasy;
 using FluentAssertions;
 using NUnit.Framework;
@@ -18,13 +19,13 @@ namespace ColleyMatrix.Tests.Provider
             IJsonSerializationProvider jsonSerializationProvider = A.Fake<IJsonSerializationProvider>();
             
             //act
-            IMatrixProvider matrixProvider = new MatrixProvider(jsonSerializationProvider, dimensions);
+            IMatrixProvider matrixProvider = new MathDotNetSparseMatrixProvider(jsonSerializationProvider, dimensions);
             
             //assert
-            matrixProvider.GetValue(0, 0).ShouldBeEquivalentTo(2);
-            matrixProvider.GetValue(0, 1).ShouldBeEquivalentTo(0);
-            matrixProvider.GetValue(1, 0).ShouldBeEquivalentTo(0);
-            matrixProvider.GetValue(1, 1).ShouldBeEquivalentTo(2);
+            matrixProvider.GetValue(0, 0).Should().Be(2);
+            matrixProvider.GetValue(0, 1).Should().Be(0);
+            matrixProvider.GetValue(1, 0).Should().Be(0);
+            matrixProvider.GetValue(1, 1).Should().Be(2);
         }
         
         [Test]
@@ -34,13 +35,13 @@ namespace ColleyMatrix.Tests.Provider
             int dimensions = 2;
             double expectedOutput = 2;
             IJsonSerializationProvider jsonSerializationProvider = A.Fake<IJsonSerializationProvider>();
-            IMatrixProvider matrixProvider = new MatrixProvider(jsonSerializationProvider, dimensions);
+            IMatrixProvider matrixProvider = new MathDotNetSparseMatrixProvider(jsonSerializationProvider, dimensions);
             
             //act
             double actualOutput = matrixProvider.GetValue(0, 0);
 
             //assert
-            actualOutput.ShouldBeEquivalentTo(expectedOutput);
+            actualOutput.Should().Be(expectedOutput);
         }
         
         [Test]
@@ -50,14 +51,14 @@ namespace ColleyMatrix.Tests.Provider
             int dimensions = 2;
             double newValue = 5;
             IJsonSerializationProvider jsonSerializationProvider = A.Fake<IJsonSerializationProvider>();
-            IMatrixProvider matrixProvider = new MatrixProvider(jsonSerializationProvider, dimensions);
+            IMatrixProvider matrixProvider = new MathDotNetSparseMatrixProvider(jsonSerializationProvider, dimensions);
             matrixProvider.SetValue(0, 0, newValue);
             
             //act
             double actualOutput = matrixProvider.GetValue(0, 0);
 
             //assert
-            actualOutput.ShouldBeEquivalentTo(newValue);
+            actualOutput.Should().Be(newValue);
         }
         
         [Test]
@@ -66,7 +67,7 @@ namespace ColleyMatrix.Tests.Provider
             //arrange
             int dimensions = 2;
             IJsonSerializationProvider jsonSerializationProvider = A.Fake<IJsonSerializationProvider>();
-            IMatrixProvider matrixProvider = new MatrixProvider(jsonSerializationProvider, dimensions);
+            IMatrixProvider matrixProvider = new MathDotNetSparseMatrixProvider(jsonSerializationProvider, dimensions);
             
             //act
             matrixProvider.SerializeToJson();
@@ -81,13 +82,13 @@ namespace ColleyMatrix.Tests.Provider
             //arrange
             int dimensions = 2;
             IJsonSerializationProvider jsonSerializationProvider = A.Fake<IJsonSerializationProvider>();
-            IMatrixProvider matrixProvider = new MatrixProvider(jsonSerializationProvider, dimensions);
+            IMatrixProvider matrixProvider = new MathDotNetSparseMatrixProvider(jsonSerializationProvider, dimensions);
             
             //act
             double actualOutput = matrixProvider.GetDimensions();
 
             //assert
-            actualOutput.ShouldBeEquivalentTo(dimensions);
+            actualOutput.Should().Be(dimensions);
         }
 
         [Test]
@@ -98,14 +99,14 @@ namespace ColleyMatrix.Tests.Provider
             double[] ratings = new double[] {0.5, 0.5};
             double[] expectedOutput = new double[] {0.25, 0.25};
             IJsonSerializationProvider jsonSerializationProvider = A.Fake<IJsonSerializationProvider>();
-            IMatrixProvider matrixProvider = new MatrixProvider(jsonSerializationProvider, dimensions);
+            IMatrixProvider matrixProvider = new MathDotNetSparseMatrixProvider(jsonSerializationProvider, dimensions);
             
             //act
             matrixProvider.SerializeToJson();
             IEnumerable<double> actualOutput = matrixProvider.LowerUpperFactorizeAndSolve(ratings);
             
             //assert
-            actualOutput.ShouldAllBeEquivalentTo(expectedOutput);
+            actualOutput.Should().BeEquivalentTo(expectedOutput);
         }
     }
 }

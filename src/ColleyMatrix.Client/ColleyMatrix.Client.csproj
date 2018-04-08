@@ -1,21 +1,19 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{2C61F796-FAED-4FF7-87E2-703E4BFA8C6B}</ProjectGuid>
-    <ProjectTypeGuids>{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <ProjectGuid>{04512033-8C82-4B72-A8BB-911289808B68}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>ColleyMatrix</RootNamespace>
-    <AssemblyName>ColleyMatrix</AssemblyName>
+    <RootNamespace>ColleyMatrix.Client</RootNamespace>
+    <AssemblyName>ColleyMatrix.Client</AssemblyName>
     <TargetFrameworkVersion>v4.7.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -25,7 +23,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
@@ -36,28 +33,30 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Data" />
-    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Exception\InvalidTeamIndexException.cs" />
-    <Compile Include="IColleyMatrixClient.cs" />
-    <Compile Include="Model\Team.cs" />
+    <Compile Include="ColleyMatrix.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Provider\IJsonSerializationProvider.cs" />
-    <Compile Include="Provider\IMatrixProvider.cs" />
-    <Compile Include="Service\ColleyMatrixService.cs" />
-    <Compile Include="Service\IColleyMatrixService.cs" />
-    <Compile Include="Service\IValidatorService.cs" />
-    <Compile Include="Service\ValidatorService.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ColleyMatrix.Provider.Matrix.MathDotNet\ColleyMatrix.Provider.Matrix.MathDotNet.csproj">
+      <Project>{ACA4A3C0-9099-47C1-8E86-1B9329C22822}</Project>
+      <Name>ColleyMatrix.Provider.Matrix.MathDotNet</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ColleyMatrix.Provider.Serializer.Json.NewtonSoft\ColleyMatrix.Provider.Serializer.Json.NewtonSoft.csproj">
+      <Project>{70469141-5C00-4EB1-B41B-BDB6E8710B35}</Project>
+      <Name>ColleyMatrix.Provider.Serializer.Json.NewtonSoft</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ColleyMatrix\ColleyMatrix.csproj">
+      <Project>{2C61F796-FAED-4FF7-87E2-703E4BFA8C6B}</Project>
+      <Name>ColleyMatrix</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
-  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
-       Other similar extension points exist, see Microsoft.Common.targets.
-  <Target Name="BeforeBuild">
-  </Target>
-  <Target Name="AfterBuild">
-  </Target>
-  -->
 </Project>

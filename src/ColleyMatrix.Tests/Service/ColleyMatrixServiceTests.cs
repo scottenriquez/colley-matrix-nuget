@@ -60,7 +60,7 @@ namespace ColleyMatrix.Tests.Service
             double actualOutput = colleyMatrixService.ComputeColleyRating(wins, losses);
 
             //assert
-            actualOutput.ShouldBeEquivalentTo(expectedOutput);
+            actualOutput.Should().Be(expectedOutput);
         }
     }
 }

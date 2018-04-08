@@ -25,7 +25,7 @@ namespace ColleyMatrix.Tests.Service
             Action action = () => validatorService.ValidateTeam(teamId);
             
             //assert
-            action.ShouldNotThrow<InvalidTeamIndexException>();
+            action.Should().NotThrow<InvalidTeamIndexException>();
         }
         
         [Test]
@@ -42,7 +42,7 @@ namespace ColleyMatrix.Tests.Service
             Action action = () => validatorService.ValidateTeam(teamId);
             
             //assert
-            action.ShouldThrow<InvalidTeamIndexException>();
+            action.Should().Throw<InvalidTeamIndexException>();
         }
         
         [Test]
@@ -59,7 +59,7 @@ namespace ColleyMatrix.Tests.Service
             Action action = () => validatorService.ValidateTeam(teamId);
             
             //assert
-            action.ShouldThrow<InvalidTeamIndexException>();
+            action.Should().Throw<InvalidTeamIndexException>();
         }
     }
 }

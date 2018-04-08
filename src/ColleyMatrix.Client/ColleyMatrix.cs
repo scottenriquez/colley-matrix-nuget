@@ -1,8 +1,10 @@
 ﻿using System.Collections.Generic;
 using ColleyMatrix.Provider;
+using ColleyMatrix.Provider.Matrix.MathDotNet;
+using ColleyMatrix.Provider.Serializer.Json.NewtonSoft;
 using ColleyMatrix.Service;
 
-namespace ColleyMatrix
+namespace ColleyMatrix.Client
 {
     /// <inheritdoc />
     public class ColleyMatrix : IColleyMatrixClient
@@ -17,12 +19,12 @@ namespace ColleyMatrix
         public ColleyMatrix(int numberOfTeams)
         {
             _numberOfTeams = numberOfTeams;
-            IJsonSerializationProvider jsonSerializationProvider = new JsonSerializationProvider();
-            IMatrixProvider matrixProvider = new MatrixProvider(jsonSerializationProvider, numberOfTeams);
+            IJsonSerializationProvider jsonSerializationProvider = new NewtonSoftJsonSerializationProvider();
+            IMatrixProvider matrixProvider = new MathDotNetSparseMatrixProvider(jsonSerializationProvider, numberOfTeams);
             IValidatorService validatorService = new ValidatorService(matrixProvider);
             _colleyMatrixService = new ColleyMatrixService(matrixProvider, validatorService);
         }
-        
+
         /// <inheritdoc />
         public void SimulateGame(int winnerId, int loserId)
         {

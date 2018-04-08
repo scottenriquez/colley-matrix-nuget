@@ -15,14 +15,14 @@ namespace ColleyMatrix.Tests.Integration.Client
             int winnerId = 4;
             int loserId = 2;
             IEnumerable<double> expectedOutput = new double[] {0.5, 0.5, 0.375, 0.5, 0.6250000000000001}; 
-            ColleyMatrix colleyMatrix = new ColleyMatrix(numberOfTeams);
+            IColleyMatrixClient colleyMatrix = new ColleyMatrix.Client.ColleyMatrix(numberOfTeams);
             
             //act
             colleyMatrix.SimulateGame(winnerId, loserId);
             IEnumerable<double> actualOutput = colleyMatrix.Solve();
 
             //assert
-            actualOutput.ShouldAllBeEquivalentTo(expectedOutput);
+            actualOutput.Should().BeEquivalentTo(expectedOutput);
         }
     }
 }

@@ -1,9 +1,9 @@
 ﻿using Newtonsoft.Json;
 
-namespace ColleyMatrix.Provider
+namespace ColleyMatrix.Provider.Serializer.Json.NewtonSoft
 {
     /// <inheritdoc />
-    public class JsonSerializationProvider : IJsonSerializationProvider
+    public class NewtonSoftJsonSerializationProvider : IJsonSerializationProvider
     {
         /// <inheritdoc />
         public string Serialize(object objectToSerialize)
