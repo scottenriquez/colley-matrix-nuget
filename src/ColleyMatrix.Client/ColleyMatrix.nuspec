@@ -2,19 +2,19 @@
 <package >
   <metadata>
     <id>ColleyMatrix</id>
-    <version>1.0.0</version>
+    <version>1.0.1</version>
     <authors>Scottie Enriquez</authors>
     <owners>Scottie Enriquez</owners>
     <licenseUrl>https://github.com/scottenriquez/colley-matrix-nuget/blob/master/LICENSE</licenseUrl>
     <projectUrl>https://github.com/scottenriquez/colley-matrix-nuget</projectUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>A NuGet package for simulating head-to-head matchups and applying the Colley algorithm</description>
-    <releaseNotes>Initial release</releaseNotes>
+    <releaseNotes>Upgrading to .NET Framework 4.7.1; upgrading versions of dependencies; refactoring package structure</releaseNotes>
     <copyright>Copyright 2018</copyright>
     <tags>Colley Matrix ColleyMatrix BCS College Football</tags>
     <dependencies>
       <dependency id="Newtonsoft.Json" version="10.0.3" />
-      <dependency id="MathNet.Numerics" version="3.20.0" />
+      <dependency id="MathNet.Numerics" version="4.4.0" />
     </dependencies>
   </metadata>
 </package>
