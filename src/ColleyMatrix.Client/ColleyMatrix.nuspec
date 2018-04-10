@@ -17,4 +17,7 @@
       <dependency id="MathNet.Numerics" version="4.4.0" />
     </dependencies>
   </metadata>
+  <files>
+    <file src="bin\Release\*.dll" target="lib\net471" />
+  </files>
 </package>
